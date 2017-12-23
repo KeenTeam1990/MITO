@@ -11,8 +11,8 @@
 #import "TGNewestVC.h"
 #import "ListImageViewCell.h"
 #import "LBPhotoBrowserManager.h"
+#import "LJSeeViewController.h"
 #import "ListModel.h"
-#import "Peoper_dataModel.h"
 #import "PeoperModel.h"
 @interface TGNewestVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic , strong)NSMutableArray *dataArr;
@@ -136,10 +136,34 @@
     for (List_audioModel * model in self.dataArr) {
         [dataImgUrlMArr addObject:model.thumbnail.firstObject];
     }
+    DefineWeakSelf;
     [[LBPhotoBrowserManager defaultManager] showImageWithURLArray:dataImgUrlMArr fromCollectionView:collectionView selectedIndex:(int)indexPath.row unwantedUrls:nil];
-    [[[LBPhotoBrowserManager defaultManager] addLongPressShowTitles:@[@"保存图片",@"分享",@"取消"]] addTitleClickCallbackBlock:^(UIImage *image, NSIndexPath *indexPath, NSString *title) {
+    [[[LBPhotoBrowserManager defaultManager] addLongPressShowTitles:@[@"保存图片至相册",@"预览",@"取消"]] addTitleClickCallbackBlock:^(UIImage *image, NSIndexPath *indexPath, NSString *title) {
+        
+        switch (indexPath.row) {
+            case 0:
+            {     [weakSelf collectPictrue:image];     }
+                break;
+            case 1:
+            {    LJSeeViewController *seeVC = [[LJSeeViewController alloc] init];
+                seeVC.image = image;
+                [self presentViewController:seeVC animated:YES completion:nil];    }
+                break;
+                
+            default:
+                break;
+        }
         
     }].lowGifMemory = NO;
+}
+
+- (void)collectPictrue:(UIImage *)imageView {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"已保存到相册" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImageWriteToSavedPhotosAlbum(imageView, nil, nil, nil);
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (NSMutableArray *)dataArr
@@ -151,8 +175,8 @@
 }
 
 - (void)setupNavBar{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"review_post_nav_icon" highImageName:@"review_post_nav_icon_click" target:self action:@selector(check)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"nav_search_icon" highImageName:@"nav_search_icon_click" target:self action:@selector(search)];
+    //self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"review_post_nav_icon" highImageName:@"review_post_nav_icon_click" target:self action:@selector(check)];
+   // self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"nav_search_icon" highImageName:@"nav_search_icon_click" target:self action:@selector(search)];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"壁纸"]];
     self.navigationItem.title = @"发现";
 }

@@ -9,6 +9,22 @@
 #ifndef MITO_prefix_pch
 #define MITO_prefix_pch
 
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+typedef enum :NSInteger{
+    LJObjectsViewControllerHot,
+    LJObjectsViewControllerFresh,
+    LJObjectsViewControllerShare,
+    LJObjectsViewControllerDistinct,
+    LJObjectsViewControllerFind,
+    LJObjectsViewControllerPicture,
+    LJObjectsViewControllerSexy,
+    LJObjectsViewControllerAmuse
+}LJObjectsViewControllerType;
+#endif
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import "UIView+frame.h"

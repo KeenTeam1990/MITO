@@ -20,9 +20,9 @@
     return imageCell;
 }
 
-- (void)setModel:(Peoper_dataModel *)model{
+- (void)setModel:(PeoperModel *)model{
     _model = model;
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.url_mobile] placeholderImage:[UIImage imageNamed:@"LBLoadError.jpg"]];
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:[UIImage imageNamed:@"LBLoadError.jpg"]];
 
 }
 

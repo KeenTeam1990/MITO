@@ -7,7 +7,13 @@
 //
 
 #import "TGPublishV.h"
-#import "TGPostWordVC.h"
+#import "LJSearchViewController.h"
+#import "LJClassifyViewController.h"
+#import "TGPostWordSecondVC.h"
+#import "LJMultiViewController.h"
+#import "TGPostWordThiredVC.h"
+#import "LJTableRootViewController.h"
+#import "LJObjectsViewController.h"
 #import "TGFastBtn.h"
 #import "TGNavigationVC.h"
 #import <POP.h>
@@ -15,14 +21,18 @@
 static CGFloat const AnimationDelay = 0.1;
 static CGFloat const SpringFactor = 10;
 
+@interface TGPublishV ()
+@property (nonatomic, strong) NSMutableArray *controllers;
+@end
+
 @implementation TGPublishV
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     RootV.userInteractionEnabled = NO;
     self.userInteractionEnabled = NO;
-    NSArray *titles = @[@"微信",@"朋友圈",@"QQ",@"空间",@"新浪"];
-    NSArray *images = @[@"publish-link",@"publish-audio",@"publish-offline",@"publish-picture",@"publish-review"];
+    NSArray *titles = @[@"搜索",@"分类",@"综合"];//,@"照相"
+    NSArray *images = @[@"publish-link",@"publish-picture",@"publish-review"];//,@"publish-audio"
     CGFloat buttonW = 72;
     CGFloat buttonH = buttonW + 30;
     NSInteger maxCols = 3;
@@ -72,6 +82,9 @@ static CGFloat const SpringFactor = 10;
         RootV.userInteractionEnabled = YES;
         self.userInteractionEnabled = YES;
     }];
+    _controllers = [NSMutableArray array];
+    
+    [self setViewControllers];
     
 }
 
@@ -101,18 +114,71 @@ static CGFloat const SpringFactor = 10;
 - (void)btnClick:(TGFastBtn *)button{
     [self cancelWithCompletionBlock:^{
         
-        NSLog(@"%@",self.imgUrl);
-//        if (button.tag == 2){
-//            TGPostWordVC *postWordVc = [[TGPostWordVC alloc] init];
-//            TGNavigationVC *nav = [[TGNavigationVC alloc]initWithRootViewController:postWordVc];
-//            UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
-//            [root presentViewController:nav animated:YES completion:nil];
-//        }
+        switch (button.tag) {
+            case 0:
+            {
+                LJSearchViewController *postWordVc = [[LJSearchViewController alloc] init];
+                TGNavigationVC *nav = [[TGNavigationVC alloc]initWithRootViewController:postWordVc];
+                UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [root presentViewController:nav animated:YES completion:nil];
+            }
+                break;
+            case 1:
+            {
+                LJClassifyViewController *postWordVc = [[LJClassifyViewController alloc] init];
+                TGNavigationVC *nav = [[TGNavigationVC alloc]initWithRootViewController:postWordVc];
+                UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [root presentViewController:nav animated:YES completion:nil];
+            }
+                break;
+            case 2:
+            {
+                LJMultiViewController *postWordVc = [[LJMultiViewController alloc]initWithSubTitles:@[@"最热",@"最新",@"分享榜",@"高清",@"热搜",@"套图",@"性感"] addControllers:_controllers];
+                TGNavigationVC *nav = [[TGNavigationVC alloc]initWithRootViewController:postWordVc];
+                UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [root presentViewController:nav animated:YES completion:nil];
+            }
+                break;
+            case 3:
+            {
+                TGPostWordThiredVC *postWordVc = [[TGPostWordThiredVC alloc] init];
+                TGNavigationVC *nav = [[TGNavigationVC alloc]initWithRootViewController:postWordVc];
+                UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [root presentViewController:nav animated:YES completion:nil];
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
     }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self cancelWithCompletionBlock:nil];
+}
+
+#pragma mark 创建viewControllers
+- (void)setViewControllers {
+    NSArray *viewControllesStr = @[@"LJHotViewController",@"LJFreshViewController",@"LJShareViewController",@"LJDistinctViewController",@"LJFindViewController",@"LJPictureViewController",@"LJSexyViewController"];
+    for (int index = 0; index < viewControllesStr.count; index ++) {
+        Class class = NSClassFromString(viewControllesStr[index]);
+        if (index == 5 || index == 6) {
+            LJTableRootViewController *tableVC = [[class alloc] init];
+            tableVC.urlStr = @"http://360web.shoujiduoduo.com/wallpaper/wplist.php?user=868637010417434&prod=WallpaperDuoduo2.3.6.0&isrc=WallpaperDuoduo2.3.6.0_360ch.apk&type=getlist&listid=%ld&st=no&pg=%ld&pc=20&mac=802275a25111&dev=K-Touch%%253ET6%%253EK-Touch%%2BT6&vc=2360";
+            tableVC.viewControllerType = index;
+            [_controllers addObject:tableVC];
+        }else {
+            LJObjectsViewController *object = [[class alloc] init];
+            object.urlStr = @"http://360web.shoujiduoduo.com/wallpaper/wplist.php?user=868637010417434&prod=WallpaperDuoduo2.3.6.0&isrc=WallpaperDuoduo2.3.6.0_360ch.apk&type=getlist&listid=%ld&st=no&pg=%ld&pc=20&mac=802275a25111&dev=K-Touch%%253ET6%%253EK-Touch%%2BT6&vc=2360";
+            object.viewControllerType = index;
+            object.isFromClassify = NO;
+            object.isFromSearch = NO;
+            [_controllers addObject:object];
+        }
+        
+    }
 }
 
 @end

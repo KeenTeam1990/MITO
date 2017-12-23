@@ -10,8 +10,6 @@
 
 @implementation PeoperModel
 
-+ ( NSDictionary*)modelContainerPropertyGenericClass {
-    return @{@"data":[Peoper_dataModel class]};
-}
+
 
 @end

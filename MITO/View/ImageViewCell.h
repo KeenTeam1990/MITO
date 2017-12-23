@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Peoper_dataModel.h"
+#import "PeoperModel.h"
 
 @interface ImageViewCell : UICollectionViewCell
 
 
 @property (nonatomic , strong)UIImageView * imgView;
-@property (nonatomic , strong)Peoper_dataModel *model;
+@property (nonatomic , strong)PeoperModel *model;
 
 @end

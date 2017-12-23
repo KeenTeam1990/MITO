@@ -8,6 +8,9 @@ target ‘MITO’ do
   # Pods for MITO
 
 pod 'AFNetworking', "~> 2.0"
+pod 'RESideMenu', '~> 4.0.7'
+pod 'RESideMenu', '~> 4.0.7'
+pod 'MBProgressHUD'
 pod 'MJExtension'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
@@ -17,4 +20,5 @@ pod 'FLAnimatedImage'
 pod 'Masonry'
 pod 'YYModel'
 pod 'pop'
+pod 'Ono'
 end

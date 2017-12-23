@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Peoper_dataModel.h"
+
 @interface PeoperModel : NSObject
 
-@property (nonatomic , copy)NSString * errmsg;
-@property (nonatomic , strong)NSArray * data;
+@property(nonatomic,copy) NSString * cover;
+@property(nonatomic,copy) NSString * name;
+@property(nonatomic,copy) NSString * count;
 
 @end

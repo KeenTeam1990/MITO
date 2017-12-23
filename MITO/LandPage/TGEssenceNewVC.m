@@ -11,13 +11,13 @@
 #import "TGEssenceNewVC.h"
 #import "ImageViewCell.h"
 #import "LBPhotoBrowserManager.h"
-#import "Peoper_dataModel.h"
 #import "PeoperModel.h"
 #import "TGPublishV.h"
+#import "LJSeeViewController.h"
 @interface TGEssenceNewVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic , strong)NSMutableArray *dataArr;
 @property(nonatomic , strong)UICollectionView *collectionView;
-@property(nonatomic ,assign)NSInteger currentPage;
+
 @end
 const int PageSize = 10;
 @implementation TGEssenceNewVC
@@ -28,27 +28,26 @@ const int PageSize = 10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     _currentPage = 5;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setupNavBar];
     [self initCollectView];
-    [self loadData:_currentPage];
+    [self loadData];
 }
 
-- (void)loadData:(NSInteger)page{
+- (void)loadData{
     
-    NSString * url = [NSString stringWithFormat:@"http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid=9&start=%ld&count=10&from=360chrome",page];
+    NSString * url = [NSString stringWithFormat:@"http://service.picasso.adesk.com/v1/wallpaper/category"];
     
     [KTHttpTool post:url  params:nil success:^(id responseObj) {
-        NSString* success =responseObj[@"errno"];
-        if (success.intValue == 0) {
-            
-            PeoperModel * model = [PeoperModel yy_modelWithDictionary:responseObj];
-            for (Peoper_dataModel * mod in model.data) {
-                [self.dataArr addObject:mod];
-            }
+        
+        NSArray * categoryArray = responseObj[@"res"][@"category"];
+        for (NSDictionary * dict in categoryArray) {
+            PeoperModel * model = [PeoperModel yy_modelWithDictionary:dict];
+            model.cover = [model.cover stringByReplacingOccurrencesOfString:@"640x480" withString:@"375x667"];
+            [self.dataArr  addObject:model];
         }
-        [_collectionView reloadData];
+        [self.collectionView  reloadData];
+      
     } failure:^(NSError *error) {
         
     }];
@@ -68,22 +67,22 @@ const int PageSize = 10;
     
     DefineWeakSelf;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        _currentPage = 5;
-        [weakSelf handleRefresh:_currentPage];
+        
+        [weakSelf handleRefresh];
        
     }];
     
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        _currentPage += 1;
-         [weakSelf handleRefresh:_currentPage];
+        
+         [weakSelf handleRefresh];
     }];
     
     
 }
 
-- (void)handleRefresh:(NSInteger)page
+- (void)handleRefresh
 {
-    [self loadData:page];
+
     [self.collectionView.mj_header endRefreshing];
     [self.collectionView.mj_footer  endRefreshing];
 }
@@ -117,7 +116,7 @@ const int PageSize = 10;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ImageViewCell *cell = (ImageViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"imageCellIdentify" forIndexPath:indexPath];
     
-    Peoper_dataModel *model = self.dataArr[indexPath.row];
+    PeoperModel *model = self.dataArr[indexPath.row];
     cell.model = model;
     
     return cell;
@@ -127,22 +126,41 @@ const int PageSize = 10;
 // 点击cell响应
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *dataImgUrlMArr = [NSMutableArray array];
-    for (Peoper_dataModel * model in self.dataArr) {
-        [dataImgUrlMArr addObject:model.url_mobile];
+    for (PeoperModel * model in self.dataArr) {
+        [dataImgUrlMArr addObject:model.cover];
     }
+    DefineWeakSelf;
     [[LBPhotoBrowserManager defaultManager] showImageWithURLArray:dataImgUrlMArr fromCollectionView:collectionView selectedIndex:(int)indexPath.row unwantedUrls:nil];
-    [[[LBPhotoBrowserManager defaultManager] addLongPressShowTitles:@[@"保存图片",@"分享",@"取消"]] addTitleClickCallbackBlock:^(UIImage *image, NSIndexPath *indexPath, NSString *title) {
+    [[[LBPhotoBrowserManager defaultManager] addLongPressShowTitles:@[@"保存图片至相册",@"预览",@"取消"]] addTitleClickCallbackBlock:^(UIImage *image, NSIndexPath *indexPath, NSString *title) {
         
-        NSLog(@"%@%ld%@",image,indexPath.row,title);
-        
-        if (indexPath.row==1) {
-            TGPublishV *publishV = [TGPublishV viewFromXIB];
-            publishV.imgUrl = dataImgUrlMArr[indexPath.row];
-            [[UIApplication sharedApplication].keyWindow addSubview:publishV];
-            publishV.frame = [UIApplication sharedApplication].keyWindow.bounds;
+        switch (indexPath.row) {
+            case 0:
+            {
+                [weakSelf collectPictrue:image];
+            }
+                break;
+            case 1:
+            {
+                LJSeeViewController *seeVC = [[LJSeeViewController alloc] init];
+                seeVC.image = image;
+                [self presentViewController:seeVC animated:YES completion:nil];
+            }
+                break;
+                
+            default:
+                break;
         }
        
     }].lowGifMemory = NO;
+}
+
+- (void)collectPictrue:(UIImage *)imageView {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"已保存到相册" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImageWriteToSavedPhotosAlbum(imageView, nil, nil, nil);
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (NSMutableArray *)dataArr
@@ -154,9 +172,9 @@ const int PageSize = 10;
 }
 
 - (void)setupNavBar{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"nav_item_game_icon-1" highImageName:@"nav_item_game_click_icon-1" target:self action:@selector(test)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"RandomAcross" highImageName:@"RandomAcrossClick" target:self action:@selector(randomAcross)];
     
+    //self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"nav_item_game_icon-1" highImageName:@"nav_item_game_click_icon-1" target:self action:@selector(test)];
+    //self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"RandomAcross" highImageName:@"RandomAcrossClick" target:self action:@selector(randomAcross)];
     self.navigationItem.title = @"壁纸";
     
 }
