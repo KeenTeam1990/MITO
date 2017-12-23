@@ -14,7 +14,8 @@
 #import "LJCollectionObjectModel.h"
 #import <MJRefresh.h>
 #import "MBProgressHUDManager.h"
-//#import "LJDetailViewController.h"
+#import "LJSeeViewController.h"
+#import "LBPhotoBrowserManager.h"
 
 
 @interface LJObjectsViewController () <UICollectionViewDelegate,UICollectionViewDataSource>{
@@ -47,6 +48,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title =self.titleN;
     [self loadData];
     [self setupUI];
 }
@@ -120,8 +122,8 @@
             [_dataArray addObject:model];
         }
         [_collectionView reloadData];
-        [_collectionView.footer endRefreshing];
-        [_collectionView.header endRefreshing];
+        [_collectionView.mj_footer endRefreshing];
+        [_collectionView.mj_header endRefreshing];
         [self.hudManager showSuccessWithMessage:@"加载成功"];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -130,9 +132,9 @@
             if (_page < 0) {
                 _page = 0;
             }
-            [_collectionView.footer endRefreshing];
+            [_collectionView.mj_footer endRefreshing];
         }
-        [_collectionView.header endRefreshing];
+        [_collectionView.mj_header endRefreshing];
         [self.hudManager showErrorWithMessage:[NSString stringWithFormat:@"%@",error.localizedDescription]];
     }];
 }
@@ -153,13 +155,45 @@
 
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    LJDetailViewController *detailVC = [[LJDetailViewController alloc] init];
-//    NSMutableArray *tempArray = [NSMutableArray array];
-//    for (NSInteger index = indexPath.row; index < _dataArray.count; index ++) {
-//        [tempArray addObject:_dataArray[index]];
-//    }
-//    detailVC.dataArray = tempArray;
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i=0; i < _dataArray.count; i ++) {
+        LJCollectionObjectModel *model = _dataArray[i];
+            [tempArray addObject:[NSString stringWithFormat:@"%@%@",model.baseurl,model.thumblink]];
+    }
+    
+    DefineWeakSelf;
+    [[LBPhotoBrowserManager defaultManager] showImageWithURLArray:tempArray fromCollectionView:collectionView selectedIndex:(int)indexPath.row unwantedUrls:nil];
+    [[[LBPhotoBrowserManager defaultManager] addLongPressShowTitles:@[@"保存图片至相册",@"预览",@"取消"]] addTitleClickCallbackBlock:^(UIImage *image, NSIndexPath *indexPath, NSString *title) {
+        
+        switch (indexPath.row) {
+            case 0:
+            {
+                [weakSelf collectPictrue:image];
+            }
+                break;
+            case 1:
+            {
+                LJSeeViewController *seeVC = [[LJSeeViewController alloc] init];
+                seeVC.image = image;
+                [self presentViewController:seeVC animated:YES completion:nil];
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
+    }].lowGifMemory = NO;
+
+}
+
+- (void)collectPictrue:(UIImage *)imageView {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"已保存到相册" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImageWriteToSavedPhotosAlbum(imageView, nil, nil, nil);
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

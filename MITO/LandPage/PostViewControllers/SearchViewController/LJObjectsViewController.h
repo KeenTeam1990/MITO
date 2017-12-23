@@ -20,4 +20,5 @@
 
 @property (nonatomic, assign) BOOL isBackObjc;
 
+@property (nonatomic, copy) NSString *titleN;
 @end

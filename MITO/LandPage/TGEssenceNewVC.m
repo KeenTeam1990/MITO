@@ -10,10 +10,10 @@
 
 #import "TGEssenceNewVC.h"
 #import "ImageViewCell.h"
-#import "LBPhotoBrowserManager.h"
 #import "PeoperModel.h"
 #import "TGPublishV.h"
 #import "LJSeeViewController.h"
+#import "LBPhotoBrowserManager.h"
 @interface TGEssenceNewVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic , strong)NSMutableArray *dataArr;
 @property(nonatomic , strong)UICollectionView *collectionView;

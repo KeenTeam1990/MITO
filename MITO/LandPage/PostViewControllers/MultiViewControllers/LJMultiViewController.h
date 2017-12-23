@@ -21,7 +21,7 @@
 /*!
  @brief 初始化方法
  @param titles  子视图控制器的title
- @param ViewControllers 子视图控制器
+
  */
 - (instancetype)initWithSubTitles:(NSArray *)titles addControllers:(NSArray *)controllers;
 

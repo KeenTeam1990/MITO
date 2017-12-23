@@ -17,13 +17,13 @@ typedef void(^scrollViewblock)(NSInteger);
 
 /*!
  @brief 当点击按钮后的scrollView随之滚动的回调方法
- @param  按钮下标
+
  */
 - (void) scrollViewIndex:(NSInteger)index;
 
 /*!
  @brief 初始化方法
- @param 控制器数组
+
  */
 - (instancetype)initWithControllers:(NSArray *)controllers;
 

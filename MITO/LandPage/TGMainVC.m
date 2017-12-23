@@ -73,7 +73,8 @@
     TGNavigationVC *essenceVc = [[TGNavigationVC alloc] initWithRootViewController:[[TGEssenceNewVC alloc] init]];
     TGNavigationVC *newVc = [[TGNavigationVC alloc] initWithRootViewController:[[TGNewestVC alloc] init]];
     TGNavigationVC *ftVc = [[TGNavigationVC alloc] initWithRootViewController:[[TGFriendTrendVC alloc] init]];
-    TGNavigationVC *meVc = [[TGNavigationVC alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:NSStringFromClass([TGMeVC class]) bundle:nil] instantiateInitialViewController]];
+    TGNavigationVC *meVc = [[TGNavigationVC alloc] initWithRootViewController:[[TGMeVC alloc] init]];
+
     
     self.viewControllers = @[essenceVc,newVc,ftVc,meVc];
     

@@ -106,8 +106,6 @@
 		45FF1D0D1FDBA1580082C266 /* TGFriendTrendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1D0B1FDBA1580082C266 /* TGFriendTrendVC.m */; };
 		45FF1D0E1FDBA1580082C266 /* TGFriendTrendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FF1D0C1FDBA1580082C266 /* TGFriendTrendVC.xib */; };
 		45FF1D121FDBA1C20082C266 /* TGMeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1D101FDBA1C20082C266 /* TGMeVC.m */; };
-		45FF1D131FDBA1C20082C266 /* TGMeVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45FF1D111FDBA1C20082C266 /* TGMeVC.storyboard */; };
-		45FF1D161FDBA1F60082C266 /* TGSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1D151FDBA1F60082C266 /* TGSettingVC.m */; };
 		45FF1D191FDBA2470082C266 /* TGNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1D181FDBA2470082C266 /* TGNewVC.m */; };
 		45FF1D1C1FDBA2950082C266 /* TGPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1D1B1FDBA2950082C266 /* TGPublishVC.m */; };
 		45FF1D1F1FDBA8090082C266 /* TGTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1D1E1FDBA8090082C266 /* TGTabBar.m */; };
@@ -321,9 +319,6 @@
 		45FF1D0C1FDBA1580082C266 /* TGFriendTrendVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGFriendTrendVC.xib; sourceTree = "<group>"; };
 		45FF1D0F1FDBA1C20082C266 /* TGMeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGMeVC.h; sourceTree = "<group>"; };
 		45FF1D101FDBA1C20082C266 /* TGMeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGMeVC.m; sourceTree = "<group>"; };
-		45FF1D111FDBA1C20082C266 /* TGMeVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TGMeVC.storyboard; sourceTree = "<group>"; };
-		45FF1D141FDBA1F60082C266 /* TGSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGSettingVC.h; sourceTree = "<group>"; };
-		45FF1D151FDBA1F60082C266 /* TGSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGSettingVC.m; sourceTree = "<group>"; };
 		45FF1D171FDBA2470082C266 /* TGNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGNewVC.h; sourceTree = "<group>"; };
 		45FF1D181FDBA2470082C266 /* TGNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGNewVC.m; sourceTree = "<group>"; };
 		45FF1D1A1FDBA2950082C266 /* TGPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGPublishVC.h; sourceTree = "<group>"; };
@@ -772,9 +767,6 @@
 				45FF1D0C1FDBA1580082C266 /* TGFriendTrendVC.xib */,
 				45FF1D0F1FDBA1C20082C266 /* TGMeVC.h */,
 				45FF1D101FDBA1C20082C266 /* TGMeVC.m */,
-				45FF1D111FDBA1C20082C266 /* TGMeVC.storyboard */,
-				45FF1D141FDBA1F60082C266 /* TGSettingVC.h */,
-				45FF1D151FDBA1F60082C266 /* TGSettingVC.m */,
 				45FF1D171FDBA2470082C266 /* TGNewVC.h */,
 				45FF1D181FDBA2470082C266 /* TGNewVC.m */,
 				45FF1D1A1FDBA2950082C266 /* TGPublishVC.h */,
@@ -965,7 +957,6 @@
 				45FF1D0E1FDBA1580082C266 /* TGFriendTrendVC.xib in Resources */,
 				45FF1CE71FDB94810082C266 /* TGPushGuideV.xib in Resources */,
 				45FD85F11FE56FFE000BC435 /* LBLoading.png in Resources */,
-				45FF1D131FDBA1C20082C266 /* TGMeVC.storyboard in Resources */,
 				45DE88A11FEE25CE00D71169 /* LJComCell.xib in Resources */,
 				45FF1C971FDB91490082C266 /* Main.storyboard in Resources */,
 				45DE88941FEE254D00D71169 /* 37x-Error.png in Resources */,
@@ -1063,7 +1054,6 @@
 				45DE88E71FEE303400D71169 /* LJTableViewModel.m in Sources */,
 				45FD86001FE575F0000BC435 /* PeoperModel.m in Sources */,
 				45DE88AB1FEE288B00D71169 /* LJClassifyViewController.m in Sources */,
-				45FF1D161FDBA1F60082C266 /* TGSettingVC.m in Sources */,
 				45FF1CD31FDB92F90082C266 /* UIImageView+download.m in Sources */,
 				45FF1D291FDBA8F40082C266 /* TGFileTool.m in Sources */,
 				45FF1D041FDBA0AC0082C266 /* TGNewestVC.m in Sources */,

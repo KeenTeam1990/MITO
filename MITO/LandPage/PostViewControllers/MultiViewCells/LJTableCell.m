@@ -29,14 +29,14 @@
 }
 
 - (void)collectButtonClicked:(UIButton *)button {
-//    if ([[LJDBManager sharedManager] addPictrueModel:self.model]) {
-//        [button setTitle:@"已收藏" forState:UIControlStateNormal];
-//    }
-    //NSLog(@"%@",NSHomeDirectory());
+
+       [button setTitle:@"已收藏" forState:UIControlStateNormal];
+
 }
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

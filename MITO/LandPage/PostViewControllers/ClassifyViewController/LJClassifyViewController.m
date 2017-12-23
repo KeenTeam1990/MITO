@@ -17,7 +17,6 @@
 @interface LJClassifyViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,FRGWaterfallCollectionViewDelegate>{
     UICollectionView *_collectionView;
     NSMutableArray *_dataArray;
-    NSInteger _page;
     
 }
 
@@ -54,14 +53,9 @@
 
 - (void) setupUI {
     FRGWaterfallCollectionViewLayout *cvLayout = [[FRGWaterfallCollectionViewLayout alloc] initWithWidth:self.view.frame.size.width / 2 - 10];
-    //NSLog(@"%f",self.view.frame.size.width / 2 - 10);
     cvLayout.delegate = self;
-    
-    //cvLayout.itemWidth = 180.0f ;//self.view.frame.size.width / 2 - 10
     cvLayout.topInset = 2.5f;
     cvLayout.bottomInset = 2.5f;
-    //cvLayout.stickyHeader = YES;
-    
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:cvLayout];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -70,11 +64,7 @@
     [_collectionView registerNib:[UINib nibWithNibName:@"LJBeautifulCityCell" bundle:nil] forCellWithReuseIdentifier:@"CITYCELL"];
     [self.view addSubview:_collectionView];
     
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [_dataArray removeAllObjects];
-        [self loadData];
-    }];
-    _collectionView.header = header;
+   
 }
 
 #pragma mark 数据相关
@@ -97,10 +87,10 @@
             [_dataArray addObject:model];
         }
         [_collectionView reloadData];
-        [_collectionView.header endRefreshing];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
        
-        [_collectionView.header endRefreshing];
+       
     }];
 }
 
@@ -129,10 +119,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     LJBeautifulCityModel *model = _dataArray[indexPath.row];
-    
     LJObjectsViewController *objVC = [[LJObjectsViewController alloc] init];
     objVC.isFromClassify = YES;
     objVC.isFromSearch = NO;
+    objVC.titleN = model.name;
     objVC.viewControllerType = [model.ID integerValue];
     objVC.urlStr = @"http://360web.shoujiduoduo.com/wallpaper/wplist.php?user=868637010417434&prod=WallpaperDuoduo2.3.6.0&isrc=WallpaperDuoduo2.3.6.0_360ch.apk&type=getlist&listid=%ld&st=hot&pg=%ld&pc=20&mac=802275a25111&dev=K-Touch%%253ET6%%253EK-Touch%%2BT6&vc=2360";
     [self.navigationController pushViewController:objVC animated:YES];

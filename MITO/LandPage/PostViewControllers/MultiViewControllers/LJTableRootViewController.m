@@ -14,13 +14,11 @@
 //#import "LJCoverPictrueViewController.h"
 
 @interface LJTableRootViewController (){
-    //UITableView *_tableView;
-    //NSMutableArray *_dataArray;
+    
     NSInteger _page;
     AFHTTPRequestOperationManager *manager;
 }
 
-//@property (nonatomic, strong) MBProgressHUDManager *hudManager;
 
 @end
 
@@ -62,13 +60,13 @@
         [self requestDataWithPage:_page];
     }];
     footer.automaticallyRefresh = NO;
-    _tableView.footer = footer;
+    _tableView.tableFooterView = footer;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page = 0;
         [_dataArray removeAllObjects];
         [self requestDataWithPage:_page];
     }];
-    _tableView.header = header;
+    _tableView.tableHeaderView = header;
 }
 
 #pragma mark 数据相关
@@ -101,18 +99,18 @@
             [_dataArray addObject:model];
         }
         [_tableView reloadData];
-        [_tableView.header endRefreshing];
-        [_tableView.footer endRefreshing];
+        [_tableView.mj_header endRefreshing];
+        [_tableView.mj_footer endRefreshing];
         [self.hudManager showSuccessWithMessage:@"加载成功"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (_tableView.footer.state == MJRefreshStateRefreshing) {
+        if (_tableView.mj_footer.state == MJRefreshStateRefreshing) {
             _page --;
             if (_page < 0) {
                 _page = 0;
             }
-            [_tableView.footer endRefreshing];
+            [_tableView.mj_footer endRefreshing];
         }
-        [_tableView.header endRefreshing];
+        [_tableView.mj_header endRefreshing];
         [self.hudManager showErrorWithMessage:[NSString stringWithFormat:@"%@",error.localizedDescription]];
     }];
 }

@@ -125,6 +125,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LJSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SEARCHCELL" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     [cell configData:_dataArray[indexPath.row] addIndex:indexPath.row];
     return cell;
@@ -152,6 +153,7 @@
     LJObjectsViewController *objVC = [[LJObjectsViewController alloc] init];
     objVC.isFromClassify = YES;
     objVC.isFromSearch = YES;
+    objVC.titleN = str;
     NSString * urlStr = [NSString stringWithFormat:@"http://360web.shoujiduoduo.com/wallpaper/wplist.php?user=868637010417434&prod=WallpaperDuoduo2.3.6.0&isrc=WallpaperDuoduo2.3.6.0_360ch.apk&type=search&keyword=%@&src=user_input&pg=0&pc=20&mac=802275a25111&dev=K-Touch%%253ET6%%253EK-Touch%%2BT6&vc=2360",str];
     objVC.urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.navigationController pushViewController:objVC animated:YES];

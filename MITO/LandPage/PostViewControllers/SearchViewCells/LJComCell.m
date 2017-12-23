@@ -13,13 +13,14 @@
 
 - (void)setModel:(LJCollectionObjectModel *)model {
     _model = model;
-    [self.backImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",model.baseurl,model.link]] placeholderImage:[UIImage imageNamed:@"playHoder"]];
+    [self.backImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",model.baseurl,model.link]] placeholderImage:[UIImage imageNamed:@"LBLoadError.jpg"]];
     self.descLabel.text = model.name;
     self.numLabel.text = [NSString stringWithFormat:@"下载:%@",model.downnum];
 }
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 @end
