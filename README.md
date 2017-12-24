@@ -3,23 +3,26 @@
 
 ### 运行效果
 
-![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/ss.jpg)
+![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2585.PNG)
 
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/pic/2.gif)
+![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2586.PNG)
 
 ### 点赞效果
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/pic/c.gif)
+![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2589.PNG)
 
 ### 随听模块效果
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/pic/b.gif)
+![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2590.PNG)
 
 ### 下拉刷新控件效果
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/pic/refresha.gif)
+![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2591.PNG)
 
-本DEMO高仿最新版百思不得姐（4.5.6），运用了以下第三方框架
-DACircularProgress
-FLAnimatedImage
-pop
+pod 'RESideMenu', '~> 4.0.7'
+pod 'DACircularProgress'
+pod 'FLAnimatedImage'
+pod 'Masonry'
+pod 'pop'
+pod 'Ono'
+end
 ...
 
 另外自己定义了一个导航条控件TGSegment，自己的导航条segment与UINavigationController的导航条相互融合，效果见GIF图，这是很多流行的APP使用的功能，当向上滚动视图时，自己的导航条与UINavigationController的bar整合在一起， 同时融合的导航条（高度64）变得透明，这也是很多流行APP使用的全屏穿透并有透视效果，如果向下滚动视图时，并达到一定速度，那么segment又从UINavigationController的导航条中分离出来，此时的导航条效果是变高了，高出的部分即segment的高度（两者的相加的高度为：64+segment高度）。
