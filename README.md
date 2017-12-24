@@ -17,11 +17,17 @@
 ![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2591.PNG)
 
 pod 'RESideMenu', '~> 4.0.7'
+
 pod 'DACircularProgress'
+
 pod 'FLAnimatedImage'
+
 pod 'Masonry'
+
 pod 'pop'
+
 pod 'Ono'
+
 end
 ...
 
