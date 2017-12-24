@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TGFriendTrendVC">
             <connections>
+                <outlet property="cardView" destination="lKV-BV-asw" id="Syg-je-3E9"/>
+                <outlet property="cardViewHeightConstraint" destination="WNZ-1G-mk6" id="ppn-Eb-DzV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ikp-C6-3oK"/>
             </connections>
         </placeholder>
@@ -19,54 +21,32 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYy-ef-xKp">
-                    <rect key="frame" x="86" y="307" width="204" height="54"/>
-                    <string key="text">快快登录吧, 关注百思最in牛人
-好友动态让你过吧瘾儿~
-欧耶~~~~!</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_cry_icon" translatesAutoresizingMaskIntoConstraints="NO" id="OJm-IL-ByR">
-                    <rect key="frame" x="163.5" y="229" width="48" height="48"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="0HE-S8-XZx"/>
-                        <constraint firstAttribute="width" constant="48" id="TxD-sY-9uM"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="class01_20" translatesAutoresizingMaskIntoConstraints="NO" id="IUW-AQ-Z4H">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOF-kS-z3h">
-                    <rect key="frame" x="87.5" y="391" width="200" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lKV-BV-asw" customClass="CardView">
+                    <rect key="frame" x="15" y="59" width="345" height="530"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="Nfr-7C-XfW"/>
-                        <constraint firstAttribute="height" constant="30" id="gys-48-Uxu"/>
+                        <constraint firstAttribute="height" constant="530" id="WNZ-1G-mk6"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="立即登录注册" backgroundImage="friendsTrend_login">
-                        <color key="titleColor" red="0.98823529409999999" green="0.24313725489999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="friendsTrend_login_click">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="loginRegister:" destination="-1" eventType="touchUpInside" id="les-FB-nic"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="kYy-ef-xKp" firstAttribute="top" secondItem="OJm-IL-ByR" secondAttribute="bottom" constant="30" id="LI9-MB-jCj"/>
-                <constraint firstItem="eOF-kS-z3h" firstAttribute="top" secondItem="kYy-ef-xKp" secondAttribute="bottom" constant="30" id="Mhy-4o-d86"/>
-                <constraint firstItem="kYy-ef-xKp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Nur-Ch-wsQ"/>
-                <constraint firstItem="kYy-ef-xKp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jDU-Yj-rsR"/>
-                <constraint firstItem="OJm-IL-ByR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="q1x-fT-Xmc"/>
-                <constraint firstItem="eOF-kS-z3h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vH3-PZ-h4C"/>
+                <constraint firstItem="IUW-AQ-Z4H" firstAttribute="centerX" secondItem="lKV-BV-asw" secondAttribute="centerX" id="79t-Ib-Pa6"/>
+                <constraint firstAttribute="bottom" secondItem="lKV-BV-asw" secondAttribute="bottom" constant="78" id="7G7-lT-CLP"/>
+                <constraint firstItem="lKV-BV-asw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="AUw-2w-218"/>
+                <constraint firstAttribute="trailing" secondItem="IUW-AQ-Z4H" secondAttribute="trailing" id="K0Q-8z-Une"/>
+                <constraint firstItem="IUW-AQ-Z4H" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K2O-MN-zfa"/>
+                <constraint firstItem="IUW-AQ-Z4H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rrb-f0-j3Z"/>
+                <constraint firstItem="lKV-BV-asw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="59" id="nEr-vL-06O"/>
+                <constraint firstAttribute="bottom" secondItem="IUW-AQ-Z4H" secondAttribute="bottom" id="nfP-Vp-whd"/>
             </constraints>
+            <point key="canvasLocation" x="-16" y="39"/>
         </view>
     </objects>
     <resources>
-        <image name="friendsTrend_login" width="243" height="48"/>
-        <image name="friendsTrend_login_click" width="243" height="48"/>
-        <image name="header_cry_icon" width="48" height="48"/>
+        <image name="class01_20" width="744" height="1220"/>
     </resources>
 </document>

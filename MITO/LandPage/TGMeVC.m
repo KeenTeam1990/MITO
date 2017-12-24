@@ -20,7 +20,7 @@ static NSString * const ID = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的";
+    self.navigationItem.title = @"设置";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
     [SVProgressHUD showWithStatus:@"正在计算缓存大小..."];
     [TGFileTool getFileSize:CachePath completion:^(NSInteger totalSize) {

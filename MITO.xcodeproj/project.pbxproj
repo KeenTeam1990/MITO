@@ -74,6 +74,10 @@
 		45FD85FA1FE56FFE000BC435 /* UIImage+LBDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FD85E91FE56FFE000BC435 /* UIImage+LBDecoder.m */; };
 		45FD85FC1FE56FFE000BC435 /* ImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FD85EE1FE56FFE000BC435 /* ImageViewCell.m */; };
 		45FD86001FE575F0000BC435 /* PeoperModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FD85FF1FE575F0000BC435 /* PeoperModel.m */; };
+		45FE661B1FEF5C660022666F /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FE66171FEF5C660022666F /* CardView.m */; };
+		45FE661C1FEF5C660022666F /* CardViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FE661A1FEF5C660022666F /* CardViewItem.m */; };
+		45FE66201FEF5DEF0022666F /* CardItem2.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FE661E1FEF5DEF0022666F /* CardItem2.m */; };
+		45FE66211FEF5DEF0022666F /* CardItem2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FE661F1FEF5DEF0022666F /* CardItem2.xib */; };
 		45FF1C8E1FDB91490082C266 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1C8D1FDB91490082C266 /* main.m */; };
 		45FF1C911FDB91490082C266 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1C901FDB91490082C266 /* AppDelegate.m */; };
 		45FF1C941FDB91490082C266 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FF1C931FDB91490082C266 /* ViewController.m */; };
@@ -257,6 +261,14 @@
 		45FD85EE1FE56FFE000BC435 /* ImageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewCell.m; sourceTree = "<group>"; };
 		45FD85FE1FE575F0000BC435 /* PeoperModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeoperModel.h; sourceTree = "<group>"; };
 		45FD85FF1FE575F0000BC435 /* PeoperModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeoperModel.m; sourceTree = "<group>"; };
+		45FE66161FEF5C660022666F /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
+		45FE66171FEF5C660022666F /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
+		45FE66181FEF5C660022666F /* CardViewConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewConstants.h; sourceTree = "<group>"; };
+		45FE66191FEF5C660022666F /* CardViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewItem.h; sourceTree = "<group>"; };
+		45FE661A1FEF5C660022666F /* CardViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewItem.m; sourceTree = "<group>"; };
+		45FE661D1FEF5DEF0022666F /* CardItem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardItem2.h; sourceTree = "<group>"; };
+		45FE661E1FEF5DEF0022666F /* CardItem2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardItem2.m; sourceTree = "<group>"; };
+		45FE661F1FEF5DEF0022666F /* CardItem2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardItem2.xib; sourceTree = "<group>"; };
 		45FF1C891FDB91490082C266 /* MITO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MITO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FF1C8D1FDB91490082C266 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45FF1C8F1FDB91490082C266 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -433,6 +445,7 @@
 		45DE88871FEE254D00D71169 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				45FE66151FEF5C660022666F /* Card */,
 				45DE88B41FEE295C00D71169 /* FRGWaterfallCollectionView */,
 				45DE88991FEE256E00D71169 /* AFOnoResponseSerializer */,
 				45DE88881FEE254D00D71169 /* MBProgressHUDManager */,
@@ -608,6 +621,9 @@
 		45FD85EC1FE56FFE000BC435 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45FE661D1FEF5DEF0022666F /* CardItem2.h */,
+				45FE661E1FEF5DEF0022666F /* CardItem2.m */,
+				45FE661F1FEF5DEF0022666F /* CardItem2.xib */,
 				45FD85ED1FE56FFE000BC435 /* ImageViewCell.h */,
 				45FD85EE1FE56FFE000BC435 /* ImageViewCell.m */,
 				45FD82201FE6517900534A88 /* ListImageViewCell.h */,
@@ -627,6 +643,18 @@
 				45FD821E1FE6495000534A88 /* List_audioModel.m */,
 			);
 			path = ModelPeple;
+			sourceTree = "<group>";
+		};
+		45FE66151FEF5C660022666F /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				45FE66161FEF5C660022666F /* CardView.h */,
+				45FE66171FEF5C660022666F /* CardView.m */,
+				45FE66181FEF5C660022666F /* CardViewConstants.h */,
+				45FE66191FEF5C660022666F /* CardViewItem.h */,
+				45FE661A1FEF5C660022666F /* CardViewItem.m */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 		45FF1C801FDB91490082C266 = {
@@ -941,6 +969,7 @@
 			files = (
 				45DE88951FEE254D00D71169 /* 37x-Error@2x.png in Resources */,
 				45FF1CF01FDB96370082C266 /* TGRefreshOC.bundle in Resources */,
+				45FE66211FEF5DEF0022666F /* CardItem2.xib in Resources */,
 				45FF1D311FDBA99B0082C266 /* TGSquareCell.xib in Resources */,
 				45FD85F01FE56FFE000BC435 /* LBLoadError.jpg in Resources */,
 				45DE88B01FEE28BD00D71169 /* LJBeautifulCityCell.xib in Resources */,
@@ -1061,6 +1090,7 @@
 				45DE88641FEE1CE400D71169 /* TGPostWordVC.m in Sources */,
 				45FD85F31FE56FFE000BC435 /* LBOptionView.m in Sources */,
 				45DE88B31FEE28DE00D71169 /* LJBeautifulCityModel.m in Sources */,
+				45FE661C1FEF5C660022666F /* CardViewItem.m in Sources */,
 				45FF1C941FDB91490082C266 /* ViewController.m in Sources */,
 				45FD85F41FE56FFE000BC435 /* LBPhotoBrowserConst.m in Sources */,
 				45DE88DE1FEE2F8D00D71169 /* LJShareViewController.m in Sources */,
@@ -1068,6 +1098,7 @@
 				45FD85F21FE56FFE000BC435 /* LBLoadingView.m in Sources */,
 				45FF1CE31FDB94810082C266 /* TGADM.m in Sources */,
 				45DE88D91FEE2F8D00D71169 /* LJFindViewController.m in Sources */,
+				45FE661B1FEF5C660022666F /* CardView.m in Sources */,
 				45FF1CE61FDB94810082C266 /* TGPushGuideV.m in Sources */,
 				45FF1CF51FDB965F0082C266 /* TGConst.m in Sources */,
 				45DE88C31FEE2B6A00D71169 /* LJMultiViewController.m in Sources */,
@@ -1099,6 +1130,7 @@
 				45FF1C911FDB91490082C266 /* AppDelegate.m in Sources */,
 				45DE88981FEE254D00D71169 /* MBProgressHUDManager.m in Sources */,
 				45FD85F81FE56FFE000BC435 /* LBTapDetectingImageView.m in Sources */,
+				45FE66201FEF5DEF0022666F /* CardItem2.m in Sources */,
 				45FF1D1C1FDBA2950082C266 /* TGPublishVC.m in Sources */,
 				45DE88DB1FEE2F8D00D71169 /* LJHotViewController.m in Sources */,
 				45DE88BA1FEE295C00D71169 /* FRGWaterfallDecorationReusableView.m in Sources */,
@@ -1216,7 +1248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1259,7 +1291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1292,6 +1324,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MITO/Tools/MITO-prefix.pch";
 				INFOPLIST_FILE = MITO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1308,6 +1341,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kt.MITO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1336,6 +1370,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MITO/Tools/MITO-prefix.pch";
 				INFOPLIST_FILE = MITO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1352,6 +1387,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kt.MITO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

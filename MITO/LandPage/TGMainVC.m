@@ -92,12 +92,12 @@
     nav1.tabBarItem.selectedImage = [UIImage imageOriginalWithName:@"tabBar_new_click_icon"];
     
     UINavigationController *nav3 = self.childViewControllers[2];
-    nav3.tabBarItem.title = @"搜索";
+    nav3.tabBarItem.title = @"图卡";
     nav3.tabBarItem.image = [UIImage imageNamed:@"tabBar_friendTrends_icon"];
     nav3.tabBarItem.selectedImage = [UIImage imageOriginalWithName:@"tabBar_friendTrends_click_icon"];
     
     UINavigationController *nav4 = self.childViewControllers[3];
-    nav4.tabBarItem.title = @"我";
+    nav4.tabBarItem.title = @"设置";
     nav4.tabBarItem.image = [UIImage imageNamed:@"tabBar_me_icon"];
     nav4.tabBarItem.selectedImage = [UIImage imageOriginalWithName:@"tabBar_me_click_icon"];
 }
