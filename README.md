@@ -5,16 +5,16 @@
 
 ![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2585.PNG)
 
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2586.PNG)
+![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2586.PNG)
 
 ### 点赞效果
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2589.PNG)
+![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2589.PNG)
 
 ### 随听模块效果
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2590.PNG)
+![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2590.PNG)
 
 ### 下拉刷新控件效果
-![](https://github.com/KeenTeam1990/baisibudejie/blob/master/PIC/IMG_2591.PNG)
+![](https://github.com/KeenTeam1990/MITO/blob/master/PIC/IMG_2591.PNG)
 
 pod 'RESideMenu', '~> 4.0.7'
 pod 'DACircularProgress'
